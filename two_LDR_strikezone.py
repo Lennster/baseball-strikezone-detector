@@ -4,8 +4,8 @@ from gpiozero import LightSensor
 from time import sleep
 from signal import pause
 
-horizSensor = LightSensor(27,queue_len = 1)
-vertSensor = LightSensor(17,queue_len = 1)
+horizSensor = LightSensor(27,queue_len = 1, charge_time_limit = 0.005)
+vertSensor = LightSensor(17,queue_len = 1,charge_time_limit = 0.005)
 
 class StrikeZone():
     def __init__(self):
