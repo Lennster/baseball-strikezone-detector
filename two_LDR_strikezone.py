@@ -4,8 +4,8 @@ from gpiozero import LightSensor
 from time import sleep
 from signal import pause
 
-horizSensor = LightSensor(27,queue_len = 1, charge_time_limit = 0.005)
-vertSensor = LightSensor(17,queue_len = 1,charge_time_limit = 0.005)
+horizSensor = LightSensor(27,queue_len = 1, charge_time_limit = 0.01)
+vertSensor = LightSensor(17,queue_len = 1,charge_time_limit = 0.01)
 
 class StrikeZone():
     def __init__(self):
@@ -60,12 +60,11 @@ class StrikeZone():
 
 try:
     detectZone = StrikeZone()
-    while True:
-        horizSensor.when_dark = detectZone.horizDark 
-        horizSensor.when_light = detectZone.horizLight 
-        vertSensor.when_dark = detectZone.vertDark
-        vertSensor.when_light = detectZone.vertLight
-        pause()
+    horizSensor.when_dark = detectZone.horizDark 
+    horizSensor.when_light = detectZone.horizLight 
+    vertSensor.when_dark = detectZone.vertDark
+    vertSensor.when_light = detectZone.vertLight
+    pause()
 except KeyboardInterrupt:
     print("Exiting early,,,")
 
